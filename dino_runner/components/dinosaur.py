@@ -71,7 +71,7 @@ class Dinosaur:
             self.image = DUCKING[1]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = X_POS
-        self.dino_rect.y = Y_POS  #####
+        self.dino_rect.y = Y_POS + 30
         self.step_index += 1
         self.dino_duck = False
 
