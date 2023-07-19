@@ -79,7 +79,7 @@ class Game:
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((255, 255, 255))
+        self.screen.fill(WHITE_COLOR)
         self.draw_background()
         self.player.draw(self.screen)
         self.draw_score()
@@ -97,13 +97,13 @@ class Game:
 
     def draw_score(self):
         font = pygame.font.Font(FONT_STYLE, 22)
-        text = font.render(f"Score: {self.score}", True, (0, 0, 0))
+        text = font.render(f"Score: {self.score}", True, BLACK_COLOR)
         text_rect = text.get_rect()
         text_rect.center = (1020, 25)
         self.screen.blit(text, text_rect)
 
     def show_menu(self):
-        self.screen.fill((255, 255, 255))
+        self.screen.fill(WHITE_COLOR)
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 
@@ -137,7 +137,7 @@ class Game:
                     BLACK_COLOR,
                     (half_screen_width, half_screen_height + 60),
                 )
-            
+
             else:
                 self.print_text(
                     22,
@@ -157,7 +157,7 @@ class Game:
                     BLACK_COLOR,
                     (half_screen_width, half_screen_height + 60),
                 )
-                
+
         pygame.display.update()
         self.handle_events_on_menu()
 
