@@ -1,4 +1,3 @@
-from typing import Self
 import pygame
 
 from dino_runner.utils.constants import (
@@ -119,7 +118,7 @@ class Game:
         else:
             self.screen.blit(ICON, (half_screen_width - 20, half_screen_height - 140))
 
-            if self.death_count > 0:
+            if self.death_count > 1:
                 self.print_text(
                     22,
                     "You lost :( ",
@@ -138,7 +137,27 @@ class Game:
                     BLACK_COLOR,
                     (half_screen_width, half_screen_height + 60),
                 )
-
+            
+            else:
+                self.print_text(
+                    22,
+                    "You lost :( ",
+                    BLACK_COLOR,
+                    (half_screen_width, half_screen_height),
+                )
+                self.print_text(
+                    20,
+                    f"Your score is {self.score}",
+                    BLACK_COLOR,
+                    (half_screen_width, half_screen_height + 30),
+                )
+                self.print_text(
+                    20,
+                    "Press to restart",
+                    BLACK_COLOR,
+                    (half_screen_width, half_screen_height + 60),
+                )
+                
         pygame.display.update()
         self.handle_events_on_menu()
 
