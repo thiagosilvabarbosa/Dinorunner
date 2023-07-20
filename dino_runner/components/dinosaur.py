@@ -8,17 +8,33 @@ from dino_runner.utils.constants import (
     RUNNING_SHIELD,
     JUMPING_SHIELD,
     DUCKING_SHIELD,
+    RUNNING_HAMMER,
+    JUMPING_HAMMER,
+    DUCKING_HAMMER,
     DEFAULT_TYPE,
     SHIELD_TYPE,
+    HAMMER_TYPE,
 )
 
 X_POS = 80
 Y_POS = 310
 JUMP_VEL = 8.5
 
-DUCK_IMG = { DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD }
-JUMP_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD }
-RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD }
+DUCK_IMG = {
+    DEFAULT_TYPE: DUCKING,
+    SHIELD_TYPE: DUCKING_SHIELD,
+    HAMMER_TYPE: DUCKING_HAMMER,
+}
+JUMP_IMG = {
+    DEFAULT_TYPE: JUMPING,
+    SHIELD_TYPE: JUMPING_SHIELD,
+    HAMMER_TYPE: JUMPING_HAMMER,
+}
+RUN_IMG = {
+    DEFAULT_TYPE: RUNNING,
+    SHIELD_TYPE: RUNNING_SHIELD,
+    HAMMER_TYPE: RUNNING_HAMMER,
+}
 
 
 class Dinosaur(Sprite):
@@ -32,12 +48,13 @@ class Dinosaur(Sprite):
         self.jump_vel = JUMP_VEL
         self.dino_run = True
         self.dino_jump = False
-        self.dino_duck = False 
+        self.dino_duck = False
         self.setup_state()
 
     def setup_state(self):
         self.has_power_up = False
         self.shield = False
+        self.hammer = False
         self.show_test = False
         self.power_up_time = 0
 
@@ -84,10 +101,7 @@ class Dinosaur(Sprite):
             self.jump_vel = JUMP_VEL
 
     def duck(self):
-        if self.step_index < 5:
-            self.image = DUCKING[0]
-        else:
-            self.image = DUCKING[1]
+        self.image = DUCK_IMG[self.type][self.step_index // 5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = X_POS
         self.dino_rect.y = Y_POS + 30
