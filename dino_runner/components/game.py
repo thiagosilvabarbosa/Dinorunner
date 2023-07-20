@@ -3,6 +3,7 @@ import pygame
 from dino_runner.utils.constants import (
     BG,
     ICON,
+    IMG_BACKGROUND,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
     TITLE,
@@ -16,7 +17,8 @@ from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 FONT_STYLE = "freesansbold.ttf"
 BLACK_COLOR = (0, 0, 0)
 WHITE_COLOR = (255, 255, 255)
-
+BACKGROUND_COLOR = (153, 255, 204)
+RED_COLOR = (255,0,0)
 
 class Game:
     def __init__(self):
@@ -53,6 +55,7 @@ class Game:
 
     def run(self):
         self.playing = True
+        pygame.mixer.music.play(-1)
         self.score = 0
         self.game_speed = 20
         self.obstacle_manager.reset_obstacles()
@@ -82,7 +85,7 @@ class Game:
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill(WHITE_COLOR)
+        self.screen.blit(IMG_BACKGROUND, (0, 0))
         self.draw_background()
         self.player.draw(self.screen)
         self.draw_score()
@@ -125,7 +128,7 @@ class Game:
                 self.player.type = DEFAULT_TYPE
 
     def show_menu(self):
-        self.screen.fill(WHITE_COLOR)
+        self.screen.fill(RED_COLOR)
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 

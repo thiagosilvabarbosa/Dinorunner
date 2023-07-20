@@ -15,7 +15,7 @@ class ObstacleManager:
             Cactus(),
             Bird(),
         ]
-
+        
         if len(self.obstacles) == 0:
             self.obstacles.append(obstacle_type[random.randint(0, 1)])
 
@@ -28,6 +28,7 @@ class ObstacleManager:
 
                 if not game.player.has_power_up:
                     pygame.time.delay(500)
+                    
                     game.playing = False
                     game.death_count += 1
                     break                
@@ -35,6 +36,9 @@ class ObstacleManager:
                     self.obstacles.remove(obstacle)  
                 elif game.player.type == "shield":
                     pass
+                elif game.player.type == "star":
+                    game.score += 150
+
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)

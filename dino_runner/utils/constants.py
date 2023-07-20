@@ -1,6 +1,7 @@
 import pygame
 import os
 
+pygame.mixer.init()
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -11,6 +12,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+
+
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -26,10 +29,15 @@ RUNNING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
+RUNNING_STAR = [
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRunStar1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRunStar2.png")),
+]
 
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
+JUMPING_STAR = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpStar.png"))
 
 DUCKING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1.png")),
@@ -44,6 +52,10 @@ DUCKING_SHIELD = [
 DUCKING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+]
+DUCKING_STAR =[
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuckStar1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuckStar2.png")),
 ]
 
 SMALL_CACTUS = [
@@ -65,11 +77,13 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, "Other/Cloud.png"))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Other/shield.png"))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Other/hammer.png"))
+STAR = pygame.image.load(os.path.join(IMG_DIR, "Other/star.png"))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, "Other/Track.png"))
-
-HEART = pygame.image.load(os.path.join(IMG_DIR, "Other/SmallHeart.png"))
+MUSIC = pygame.mixer.music.load(os.path.join(IMG_DIR, "Other/music.mp3"))
+IMG_BACKGROUND = pygame.image.load(os.path.join(IMG_DIR, "Other/background.jpg"))##
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"
+STAR_TYPE = "star"
